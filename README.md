@@ -22,6 +22,33 @@
   <img src="https://github.com/michael-steinert/KubernetesEssentials/assets/29623199/82b20636-68ed-4937-84a1-9f2c0ad9d6c1" alt="Shared Responsibility" width="50%"/>
 </P>
 
+### Infrastructure-as-a-Service (IaaS)
+
+- Infrastructure-as-a-Service (IaaS) is the most flexible Category of Cloud Services, as it gives Users the greatest possible Control over their Cloud Resources
+- In an IaaS Model, the Cloud Provider is responsible for the Hardware, Network Connectivity and physical Security. The User is responsible for everything else: Installation, Configuration and Maintenance of the Operating System, Network Configuration, Database and Storage Configuration
+- IaaS is suitable for the following Scenarios:
+  - Lift and Shift Migration: Users set up cloud Resources similar to their local Data Centre and then simply move the System that is running locally to the IaaS Infrastructure to run
+  - Test and Development: Users have created Configurations for Development and Test Environments that they need to replicate quickly. With an IaaS Structure, Users can quickly set up or shut down the different Environments while maintaining complete Control
+
+### Platform-as-a-Service (PaaS)
+
+- Platform-as-a-Service (PaaS) is a Middle Ground between Renting Storage Space in a Data Centre (Infrastructure-as-a-Service) and Buying a complete, Deployed Solution (Software-as-a-Service)
+- In a PaaS Environment, the Cloud Provider manages the physical Infrastructure, physical Security and Connection to the Internet
+- The Cloud Provider is also responsible for Operating Systems, Middleware, Development Tools and Business Intelligence Services that are Part of a Cloud Solution
+- In a PaaS Environment, Users do not have to care about Licensing or Patching Operating Systems and Databases
+- The PaaS Environment provides Users with a complete Development Environment without having to manage the entire Development Infrastructure
+- PaaS is suitable for the following Scenarios:
+
+  - Development Framework: PaaS provides a Framework that Developers can use as a Basis for Developing or Customizing Cloud-based Applications. PaaS enables Developers to create Applications with integrated Software Components. Cloud Features such as Scalability, high Availability and Multi-Instance Capability are included and reduce the Programming Effort for Developers
+  - Analytics and Business Intelligence: PaaS Tools allow Companies to extract and analyze their Data to gain Insights, identify Patterns and predict Outcomes. In this Eay, Forecasting, Product Development Decisions, Returns and other Business Decisions can be improved
+
+### Software-as-a-Service (SaaS)
+
+- Software-as-a-Service (SaaS) is a complete Cloud Service Model from a Product Perspective
+- With SaaS, Users rent or use a fully developed Application
+- The SaaS Model is inflexible but easy to set up and run, requiring little technical Expertise to deploy
+- Email Programmes, Financial Software, Messaging Applications and Network Software are Examples of SaaS Implementations
+
 ## Cloud Models
 
 - Cloud Models define the Way Cloud Resources are delivered
@@ -136,7 +163,7 @@
 - The Cloud makes it possible to track Resources in Real Time, Monitor Resources to ensure they are being used as efficiently as possible, and apply Data Analytics to identify Patterns and Trends that help better plan Resource Provisioning
 - By Operating in the Cloud, Cloud Analytics and the resulting Data, future Costs can be predicted and Resources adjusted as needed
 
-#### Governance
+### Governance
 
 - Whether deployed Infrastructure-as-a-Service or Software-as-a-Service, Cloud Capabilities support Governance and Compliance
 - Templates ensure that all provisioned Resources comply with Corporate Standards and Regulatory Requirements
@@ -157,6 +184,7 @@
 - For Cloud Computing, there are the following two types of Manageability
 
 #### Cloud Management
+
 - Cloud Management means managing the Cloud Resources. The following is possible in the Cloud:
   - Automatic Scaling of Resource Provisioning according to Demand
   - Provision Resources based on a pre-configured Template, eliminating the Need for manual Configuration
@@ -164,6 +192,7 @@
   - Receive automatic Alerts based on configured Metrics so the User is informed of Performance in Real Time
 
 #### Management in the Cloud
+
 - Cloud Management is about how the User can manage its Cloud Environment and Resources. The User can manage them in the following Ways:
   - Via a Web Portal
   - Via a Command Line Interface
