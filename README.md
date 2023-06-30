@@ -197,3 +197,119 @@
   - Via a Web Portal
   - Via a Command Line Interface
   - Via APIs
+
+<hr>
+
+## Organizing Structure
+
+- The Organizing Structure for Resources in Azure includes the following four Levels: Management Groups, Subscriptions, Resource Groups, and Resources
+
+<p align="center">
+  <img src="https://github.com/michael-steinert/AgileSoftwareDevelopmentDAO/assets/29623199/a5f39b5e-cbd5-45d5-9c53-f5011376c86a" alt="Organizing Structure for Resources" width="40%"/>
+</P>
+
+- **Resources**: Resources are Instances of Services created by Users, such as Virtual Computers, Storage, or SQL Databases.
+- **Resource Groups**: Resources are grouped together into Resource Groups. Resource Groups act as logical Containers in which Azure Resources such as Web Applications, Databases, and Storage Accounts are deployed and managed
+- **Subscriptions**: A Subscription groups together User Accounts and the Resources created by those Accounts. Each Subscription has Limits or Contingents on the Number of Resources that can be created and used. Organizations can use Subscriptions to manage the Costs and Resources created by Users, Teams, or Projects
+- **Management Groups**: Management Groups allow Users to manage Access, Policy, and Compliance for multiple Subscriptions. All Subscriptions in a Management Group automatically inherit the Terms that apply to the Management Group
+
+## Region, Availability Zone and Region Pair
+
+- Resources are created in Regions that are different geographic Locations around the World with Azure Data Centers
+- Azure consists of Data Centers distributed around the World
+- When a User uses a Service or creates a Resource, such as an SQL Database or a Virtual Machine, physical Devices are used in at least one of these Locations
+- These dedicated Data Centers are not directly available to Users, because they are organized by Azure into Regions
+- These Regions contain Availability Zones, which are separate Azure Data Centers in the respective Region
+
+### Region
+
+- A Region is a geographic Area in the World that contains at least one, but possibly more, Data Centers that are close together and connected by a low-latency Network
+- Azure intelligently allocates and controls Resources within each Region to ensure that Workloads are distributed evenly
+- Regions enable better Scalability and Redundancy as well as Data Residency for Resources
+- Specialized Regions can also be used for Compliance or Legal Reasons
+
+### Availability Zone
+
+- Users assemble their compute, storage, network and data resources in one Availability Zone and can replicate them in other Availability Zones.
+- Users create their Compute, Storage, Network and Data resources in an Availability Zone and can replicate them to other Availability Zones
+- Availability Zones provide Redundancy of Services and Data to protect them in the event of a Failure, enabling high Availability of an Application
+- Availability Zones are physically separate Data Centers in an Azure Region
+- Each Availability Zone consists of at least one Data Center whose Power, Cooling, and Network Operations function independently
+- Availability Zones are set up as isolation Boundaries, but are interconnected via high speed private Networks
+- Availability Zones are provided for Virtual Machines, managed Volumes, Load Balancers and SQL Databases. Therefore they are supported by the following Categories of Azure Services:
+  - Zonal Services: They permanently assign the Resource to a specific Zone (e.g. Virtual Machines, managed Volumes or IP Addresses)
+  - Zone redundant Services: The Platform automatically replicates across Availability Zones (e.g. Zone-redundant Storage or SQL Database)
+  - Non-regional Services: Services are always available in Azure Geographies and are resilient to both Zone-wide and Regional Failures
+
+### Region Pair
+
+- Region Pairs are Regions that are combined with another Region at least 300 miles (approx. 480 km) away within the same Geography (e.g. USA, Europe or Asia)
+- Region Pairs enable Replication of Resources within a Geography to reduce the Likelihood of Interruptions due to major Events
+
+## Azure Resource
+
+- Before a Subscription can be created, Resources must be created and stored in Resource Groups. These terms are defined as follows:
+  - **Resource**: A Resource is a manageable Element that is available through Azure. Examples of Resources include Virtual Machines, Storage Accounts, Web Applications, Databases and Virtual Networks
+  - **Resource Group**: A Resource Group is a Container that contains related Resources for an Azure Solution. The Resource Group contains Resources that the User wants to manage as a Group. The User decides which Resources belong to a Resource Group depending on what makes the most Sense for their Organization
+
+## Azure Resource Groups
+
+- A Resource Group is a logical Container for Resources that are provisioned in Azure
+- Azure Resources include everything the User creates in an Azure Subscription
+- All Azure Resources must be in a Resource Group and a Resource can only belong to one Resource Group
+- Resource Groups help Users organize and manage their Azure Resources by adding their Resources that are similar in Terms of Use, Type or Location to a Resource Group
+- This logical Grouping is important for Users because Azure Resources are stored in an unorganized Way
+
+### Lifecycle
+
+- Deleting a Resource Group deletes all the Resources it contains
+- Organizing Resources by Life Cycles can be useful in non-production Environments where Users may run an Experiment and then delete it again
+- Resource Groups allow Users to easily delete multiple Resources at once
+
+### Authorization
+
+- Resource Groups can be assigned Permissions as Part of Role-based Access Control (RBAC)
+- By Assigning RBAC Permissions to a Resource Group, Users can simplify Administration and limit Access to what is necessary
+
+### Azure Resource Manager
+
+- Azure Resource Manager is the Provisioning and Management Service for Azure
+- It provides a Management Layer to create, update and delete Resources in an Azure Account
+- Users can use Management Features such as Access Control, Locks and Tags to protect and organize their Resources after Provisioning
+- When a User sends a Request via one of the Azure Tools, APIs or SDKs, it is received by Resource Manager, where the Request is authenticated and authorized and then the Resource Manager sends the request to the Azure Service that performs the requested Action
+- Since all Requests are processed through the same API, the Results and Functions are consistent across all Tools
+
+<p align="center">
+  <img src="https://github.com/michael-steinert/AgileSoftwareDevelopmentDAO/assets/29623199/23097133-64e6-4395-98dc-7c8e3645f8ec" alt="Resource Manager" width="70%"/>
+</P>
+
+- The Resource Manager has the following Advantages:
+
+  - Management of Infrastructure via declarative Templates (instead of Scripts). A Resource Manager Template is a JSON File that defines what the User wants to provision in Azure
+  - Provision, manage and monitor all Resources for the Azure Solution as a Resource Group, instead of managing these Resources individually
+  - Users can redeploy their Azure Solution during the Development Cycle and be confident that their Resources are deployed in a consistent State
+  - Define Dependencies between Resources so they are provisioned in the correct Order
+  - Apply Access Control to all Services as Role-based Access Control (RBAC) is natively integrated into the Management Platform
+  - Apply Tags to Resources to logically organize all Resources in the subscription
+  - Provide Billing Information to Users by Displaying the Cost of a Resource Group with the same Tag
+
+## Azure Subscription
+
+- An Azure Subscription provides authenticated and authorized Access to Azure Services
+- It also enables the User to provision Resources
+- It is a logical Unit of Azure Services associated with an Azure Account
+- An Azure Account is an Identity in Azure Active Directory (Azure AD) or in a Directory trusted by Azure AD
+- An Account may have one or more Subscriptions, which are Subject to different Billing Models and Access Management Policies
+- Azure Subscriptions allow to define following two Limits for Azure Products, Services and Resources:
+  - **Billing Limits**: This Subscription Type determines how Azure Usage is billed to an Azure Accounts. This allows the User to create multiple Subscriptions for different Types of Billing Requirements
+  - **Access Control Limits**: Azure applies Access Management Policies at the Subscription level. This allows the User to create separate Subscriptions for different organizational Structures
+
+## Azure Management Group
+
+- Azure Management Groups are one Domain Level above Subscriptions
+- Users organize Subscriptions into Containers called Management Groups and apply their Governance Conditions to the Management Groups
+- All Subscriptions in a Management Group automatically inherit the Terms that apply to the Management Group
+- Management Groups allow Users to use Governance widely, regardless of the Type of Subscriptions they have
+- All Subscriptions in a Management Group must trust the same Azure AD Client
+
+<hr>
