@@ -313,3 +313,65 @@
 - All Subscriptions in a Management Group must trust the same Azure AD Client
 
 <hr>
+
+## Azure Compute
+
+- Azure Compute is an on-demand Computing Service for running cloud-based Applications
+- It provides IT Resources such as Disks, Processors, Memory, Network and Operating Systems
+- These provided Resources are available at any Time and are provisioned in a very short Time
+- Users pay only for the Resources they use, and only for as long as they use them
+- Azure supports a wide Range of Computing Solutions for Developing and Testing, Running Applications, and Expanding Data Centre
+- Azure also offers many Services that can run Virtual Machines
+
+### Azure Virtual Machine
+
+- Virtual Machines (VMs) are Software Emulations of physical Computers that have a virtual Processor, Memory, Storage and Network Resources
+- VMs host an Operating System and allow Software to be installed and run as on a physical Computer
+- Using a Remote Desktop Client, Users can use and control the Virtual Machine like a physical Computer
+- With `Azure Virtual Machines`, Users can create and use VMs in the Cloud
+- VMs provide Infrastructure-as-a-Service (IaaS), giving the User complete Control over their Operating System and Environment
+- VMs allow Users to run their own Software or Custom Hosting Configurations
+- Virtual machines are the ideal Choice when the User requires:
+  - Full Control over the Operating System
+  - The Ability to run their own Software
+  - The ability to use Custom Hosting Configurations
+
+#### VM Scaling Groups
+
+- `VM Scaling Groups` are an Azure Computing Resource that allows Users to provision and manage a Group of identical VMs
+- Because all VMs in a VM Scaling Group are configured identically, VM Scaling Groups enable true Auto-Scaling, eliminating the Need to provision VMs in Advance
+- Auto-Scaling facilitates the Creation of large-scale Services designed for high Computing Power, Big Data and Workloads in Containers
+- As Demand increases, more VM Instances can be added; as Demand decreases, VM Instances can be removed
+- Scaling can be done manual, automated or a Combination of both
+
+#### Containers and Kubernetes
+
+- `Azure Container Instances` and `Azure Kubernetes Service` are Azure IT Resources that Users can use to deploy and manage Containers
+- Containers are lightweight, virtualized Application Environments
+- Containers are designed so that Users can create them quickly, scale them horizontally and terminate them dynamically
+- Users can run multiple Instances of a containerized Application on a single Host Computer
+- `Azure Container Instances` provides the fastest and easiest Way to run a Container in Azure without having to manage VMs or deploy additional Services
+- `Azure Kubernetes Service` is an Orchestration Service tasked with Automating, Managing and Interacting with Containers
+
+#### Azure App Service
+
+- `Azure App Services` enables Users to build, deploy and scale enterprise-class Web, Mobile and API Applications that can run on any Platform
+- The Applications created can meet rigorous Performance, Scalability, Security and Compliance Requirements using a fully managed Infrastructure Maintenance Platform
+- `Azure App Services` is a PaaS (Platform as a Service) Offering
+
+#### Azure Functions
+
+- `Azure Functions` is used when Users only need to worry about the Code that runs their Service, not the underlying Platform (like Operating System and Server) or Infrastructure
+- `Azure Functions` is often used when Users need to perform a Task in Response to an Event (often via a REST Request), Timer or Message from another Azure Service, and that Task can be executed quickly (within seconds or less)
+- `Azure Functions` are triggered by Events (often via a REST Request), Timers or Messages from other Azure Services to perform their Task
+- `Azure Functions` manage the Infrastructure and the Provisioning/Deprovisioning of Resources according to Demand
+- Scaling and Performance Adjustment are also done automatically by `Azure Functions`
+- The User is only charged for the Resources actually used
+- `Azure Functions` can be either stateless or stateful:
+  - If `Azure Functions` are stateless (default), they behave as if they have been restarted each Time they respond to an Event
+  - If `Azure Functions` are stateful (called Durable Functions), a Context is passed through the Function to track previous Activity
+
+##### Azure Functions vs. Azure Logic Apps
+
+- `Azure Functions` can execute Code in almost any modern Programming Language
+- `Azure Logic Apps` are created in a Web-based Designer and can execute Logic triggered by Azure Services without writing Code
