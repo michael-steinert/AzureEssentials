@@ -387,12 +387,18 @@
 
 | Component                      | Description                                                                                                                                                                                                                                                                                                                    |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Function Triggers              | Triggers are what cause a Function to be executed. A Trigger defines how a Function is called, and a Function must have exactly one Trigger                                                                                                                                                                                    |
-| Function Bindings              | Binding to a Function provides a Way to declaratively connect another Resource to the Function; Bindings can be connected as Input Bindings, Output Bindings or both. Data from Bindings are provided to the Function as Parameters                                                                                            |
+| Function Triggers              | Triggers are Events that cause a Function to be executed. A Trigger defines how a Function is called, and a Function must have exactly one Trigger                                                                                                                                                                             |
+| Function Bindings              | Binding to a Function provides a Way to declaratively connect another (Cloud) Resource to the Function; Bindings can be connected as Input Bindings, Output Bindings or both. Data from Bindings are provided to the Function as Parameters                                                                                    |
 | Function Runtime               | Functions currently supports multiple Versions of the Runtime Host. Functions also support many different Runtimes such as .NET Core, Node.js, Java, PowerShell and Python                                                                                                                                                     |
 | API Management                 | API Management provides Security and Routing for the HTTP-triggered Function Endpoints to make them available as a true REST API                                                                                                                                                                                               |
 | Provisioning Slots             | Provisioning Slots allow a Functions App to run different Instances called Slots. Slots are different Environments made available through a publicly available Endpoint. Slots provide a Way to test a new Version of Functions in a secure Environment and then seamlessly change the new Version into the production Version |
 | Configuration of Function Apps | Connection Strings, Environment Variables and other Application Settings are defined separately for each Function App. The Values for Function App Settings can be read in the Code as Environment Variables                                                                                                                   |
+
+##### Message Queue
+
+- A Message Queue is a Software Component used to handle Messaging between Processes, Threads or Applications
+- It can store a Message, and Workers can retrieve the Message when it is appropriate
+- Message Queues can generate Events with a Payload, and Azure Functions can listen to such a Message and execute its Code when the Message is published
 
 <hr>
 
@@ -403,5 +409,49 @@
 - `Azure API Management` handles all Tasks related to the Mediation of API Calls, including Request Authentication and Authorization, Rate Limit and Contingency Enforcement, Request and Response Transformation, Logging and Tracking, and API Version Management
 - `Azure API Management` supports importing `Azure Function Apps` as new APIs and appending these Apps to existing APIs
 - This Process automatically generates a Host Key in the `Azure Function App`, which is then assigned to a named Value in `Azure API Management`
+- `Azure API Management` consists of the following Components:
+- The **Azure API Gateway** acts as a Reverse Proxy, routing Requests from Clients to Services. It is the Endpoint that:
+
+  - Accepts API calls and routes them to the Backend
+  - Verifies API Keys, JWT Tokens, Certificates and other Credentials
+  - Enforces Usage Quotas and Rate Limits
+  - Transforms the underlying API without Code Changes
+  - Caches Backend Responses if the Capability is set up
+  - Logs Call Metadata for Analysis
+
+- The **Azure Portal** is the administrative Interface where the Administrator sets up the API Program. It can also be used to:
+
+  - Define or import API Schema
+  - Package APIs into Products
+  - Set up Usage Policies such as Quotas or Transformations on the APIs
+  - Get Insights from Analytics
+  - Manage Users
+
+- The **Azure Developer Portal** is the main Web Presence for Developers. From Developer Portal they can:
+
+  - Read API Documentation
+  - Try out an API via the Interactive Console
+  - Create an Account and subscribe to get API Keys
+  - Access Analytics on their own Usage
+
+### API Definition
+
+- To use `Azure API Management`, Administrators define APIs in the DEveloper Portal
+- Each API consists of one or more Operations (i.e. Endpoints) and can be added to one or more Products
+- To use an API, Developers subscribe to a Product that contains that API and then call the API's Operations (i.e. Endpoints), following any Usage Policies that may apply
+- Usage Policies allow the Publisher to change the Behavior of the API through Configuration
+- They are a Collection of Statements that are executed sequentially on the Request or Response of an API
+
+### Subscriptions and API Keys
+
+- Subscriptions allow Control of Access to APIs through Segmentation of User Access to an API
+- API Keys provide the Authorization to access these Subscriptions
+- Whenever a Client makes a request to a protected API, a valid API Key must be included in the HTTP Request or the Request will be rejected
+- API Keys can be passed in the Request Header (Ocp-Apim-Subscription-Key) or as a Query String Parameter (subscription-key) in the URL
+- The API Key is directly associated with a Subscription, which can be scoped to different Areas, allowing Subscriptions to provide Control over Permissions and Usage Policies
+- The three Subscription Scopes are:
+- **All APIs**: applies to every API accessible from the `Azure API Gateway`
+- **Single API** applies to a single imported API and all of its Endpoints
+- **Product**: a Product is a Collection of one or more APIs that is configured through the `Azure API Management`. Products can have different Access Rules, Usage Quotas, and Usage Policies
 
 <hr>
