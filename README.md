@@ -364,6 +364,11 @@
 - `Azure Functions` is used when Users only need to worry about the Code that runs their Service, not the underlying Platform (like Operating System and Server) or Infrastructure
 - `Azure Functions` is often used when Users need to perform a Task in Response to an Event (often via a REST Request), Timer or Message from another Azure Service, and that Task can be executed quickly (within seconds or less)
 - `Azure Functions` are triggered by Events (often via a REST Request), Timers or Messages from other Azure Services to perform their Task
+- An `Azure Function App` requires an `Azure Storage Account` that supports Blob, Queue, File, and Table Storage because `Azure Functions` rely on Storage for Operations such as Managing Triggers and Logging Function Executions
+- The `Azure Storage Account` used by an `Azure Function App` can also be used by Triggers and Bindings to store Application Data
+- A `Azure Function App` provides an Execution Context in which `Azure Functions` are executed, so they are managed, deployed, and scaled together
+- All `Azure Functions` in a `Azure Function App` share the same Pricing Plan, Deployment Method, and Runtime Version
+- It is also the Unit of Deployment, Management and Scale for `Azure Functions`, so when a `Azure Function App` scales out, more (Cloud) Resources are allocated to run multiple Instances of the `Azure Functions` Host
 - `Azure Functions` manage the Infrastructure and the Provisioning/Deprovisioning of Resources according to Demand
 - Scaling and Performance Adjustment are also done automatically by `Azure Functions`
 - The User is only charged for the Resources actually used
