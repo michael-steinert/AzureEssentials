@@ -19,7 +19,7 @@
 - PaaS is in between IaaS and SaaS and distributes the Responsibility equally between the Cloud Provider and the User
 
 <p align="center">
-  <img src="https://github.com/michael-steinert/KubernetesEssentials/assets/29623199/82b20636-68ed-4937-84a1-9f2c0ad9d6c1" alt="Shared Responsibility" width="50%"/>
+  <img src="https://github.com/michael-steinert/KubernetesEssentials/assets/29623199/82b20636-68ed-4937-84a1-9f2c0ad9d6c1" alt="Shared Responsibility" width="40%"/>
 </P>
 
 ### Infrastructure-as-a-Service (IaaS)
@@ -205,7 +205,7 @@
 - The Organizing Structure for Resources in Azure includes the following four Levels: Management Groups, Subscriptions, Resource Groups, and Resources
 
 <p align="center">
-  <img src="https://github.com/michael-steinert/AgileSoftwareDevelopmentDAO/assets/29623199/a5f39b5e-cbd5-45d5-9c53-f5011376c86a" alt="Organizing Structure for Resources" width="40%"/>
+  <img src="https://github.com/michael-steinert/AgileSoftwareDevelopmentDAO/assets/29623199/a5f39b5e-cbd5-45d5-9c53-f5011376c86a" alt="Organizing Structure for Resources" width="25%"/>
 </P>
 
 - **Resources**: Resources are Instances of Services created by Users, such as Virtual Computers, Storage, or SQL Databases.
@@ -280,7 +280,7 @@
 - Since all Requests are processed through the same API, the Results and Functions are consistent across all Tools
 
 <p align="center">
-  <img src="https://github.com/michael-steinert/AgileSoftwareDevelopmentDAO/assets/29623199/23097133-64e6-4395-98dc-7c8e3645f8ec" alt="Resource Manager" width="70%"/>
+  <img src="https://github.com/michael-steinert/AgileSoftwareDevelopmentDAO/assets/29623199/23097133-64e6-4395-98dc-7c8e3645f8ec" alt="Resource Manager" width="35%"/>
 </P>
 
 - The Resource Manager has the following Advantages:
@@ -374,7 +374,7 @@
 - The User is only charged for the Resources actually used
 - `Azure Functions` can be either stateless or stateful:
   - If `Azure Functions` are stateless (default), they behave as if they have been restarted each Time they respond to an Event
-  - If `Azure Functions` are stateful (called Durable Functions), a Context is passed through the Function to track previous Activity
+  - If `Azure Functions` are stateful (called `Durable Functions`), a Context is passed through the Function to track previous Activity
 - The Context in which an `Azure Function` runs is called a `Function App`
 - A `Function App` is a Unit for Deploying, Managing and Scaling the `Azure Function`
 - All `Azure Functions` in a `Function App` share the same Settings and Connections
@@ -404,6 +404,58 @@
 - A Message Queue is a Software Component used to handle Messaging between Processes, Threads or Applications
 - It can store a Message, and Workers can retrieve the Message when it is appropriate
 - Message Queues can generate Events with a Payload, and Azure Functions can listen to such a Message and execute its Code when the Message is published
+
+##### Durable Functions
+
+- `Durable Functions` is an Extension of `Azure Functions` that allows to perform persistent, stateful Operations in in a Serverless Environment
+- Azure provides the Infrastructure for Maintaining State Information that can retain the State between Function Calls
+- `Durable Functions` are used to orchestrate a long-running Workflow
+- `Durable Functions` give all the Benefits of a Serverless Hosting Model, while handling Activities like Monitoring, Synchronization, and Runtime Issues
+- Some of the Benefits of using `Durable Functions` are:
+  - `Durable Functions` allow to write Event-Driven Code. A `Durable Function` can wait asynchronously for one or more external Events, and then perform a Series of Tasks in response to those Events
+  - `Durable Functions` can chain Functions together. This can be used to implement common Patterns such as Fan-Out/Fan-In, which uses one Function to call others in parallel and then accumulate the Results
+  - `Durable Functions` can be orchestrated and coordinated, and the Order in which they are executed can be specified
+  - The State for `Durable Functions` is managed by Azure, so Developers do not need to write custom Code to store State Information for a `Durable Function`
+  - `Durable Functions` can be called both synchronously and asynchronously. Output from the called Functions is saved locally in Variables and used in subsequent Function Calls
+  - Azure automatically checkpoints the Progress of a `Durable Function` when the Function is waiting. Azure may choose to dehydrate the `Durable Function` and save its State while the Function waits to conserve Resources and reduce Costs. When the `Durable Function` starts running again, Azure will rehydrate it and restore its State
+
+###### Durable Function Types
+
+- **Client Functions** are the Entry Point for creating an Instance of a `Durable Functions` Orchestration. They can be run in Response to an Event from many Sources, such as a new HTTP Request arriving, a Message being posted to a Message Queue, an Event arriving in an Event Stream
+- **Orchestrator Functions** describe how Actions are performed and the Order in which they are performed
+- **Activity Functions** are the Basic Units of Work in a `Durable Function` Orchestration. An `Activity Function` contains the actual Work performed by the Tasks being orchestrated
+
+###### Durable Function Patterns
+
+- **Function Chaining**: In this Pattern, the Workflow executes a Sequence of Functions in a specified Order. The Output of one Function is applied to the Input of the next Function in the Sequence. The Output of the last Function is used to produce a Result
+
+<p align="center">
+  <img src="https://github.com/michael-steinert/AzureEssentials/assets/29623199/69a5c21b-e3ef-400e-9772-8a3fe6f833b5" alt="Function Chaining" width="30%"/>
+</P>
+
+- **Fan Out/Fan In**: This Pattern executes multiple Functions in parallel and waits for all Functions to complete. The Results of the parallel Executions can be aggregated or used to calculate a final Result
+
+<p align="center">
+  <img src="https://github.com/michael-steinert/AzureEssentials/assets/29623199/1d70afd7-5f36-4bf8-841f-996e421cad91" alt="Fan Out/Fan In" width="20%"/>
+</P>
+
+- **Async HTTP APIs**: This Pattern addresses the Problem of Coordinating the State of long-running Operations with external Clients. An HTTP Call can trigger the long-running Action. It can then redirect the Client to a Status Endpoint. The Client can find out when the Operation has finished by polling this Endpoint
+
+<p align="center">
+  <img src="https://github.com/michael-steinert/AzureEssentials/assets/29623199/919ff123-06c1-4e7b-8d97-2c180d0c3a1c" alt="Async HTTP APIs" width="15%"/>
+</P>
+
+- **Monitor**: This Pattern implements a recurring Process in a Workflow, possibly Checking for a Change in State. For Example, this Pattern can be used to poll until certain Conditions are met
+
+<p align="center">
+  <img src="https://github.com/michael-steinert/AzureEssentials/assets/29623199/a1e02605-a01e-4f88-a560-a7ffa1191ba7" alt="Monitor" width="10%"/>
+</P>
+
+- **Human Interaction**: This Pattern combines automated Processes with some Human Interaction. A manual Process within an automated Process is tricky because Humans are not as highly available and responsive as most Computers. Human Interaction can be incorporated using Timeouts and Remediation Logic that kicks in if the Human does not interact correctly within a specified Response Time. An Approval Process is an Example of a Process that requires Human Interaction
+
+<p align="center">
+  <img src="https://github.com/michael-steinert/AzureEssentials/assets/29623199/c1b23f17-a1d3-4951-a85a-f41bf6c5e7eb" alt="Human Interaction" width="30%"/>
+</P>
 
 <hr>
 
