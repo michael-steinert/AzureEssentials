@@ -457,6 +457,12 @@
   <img src="https://github.com/michael-steinert/AzureEssentials/assets/29623199/c1b23f17-a1d3-4951-a85a-f41bf6c5e7eb" alt="Human Interaction" width="30%"/>
 </P>
 
+###### Webhooks
+
+- Webhooks are User-defined HTTP Callbacks
+- They provide a lightweight Mechanism for Applications to be notified by another Service when something of Interest happens through an HTTP Endpoint
+- Developers can use a Webhook to trigger an `Azure Function`, and then analyze the Message to determine what happened and how to respond
+
 <hr>
 
 ## Azure API Management
