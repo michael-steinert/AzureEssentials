@@ -505,6 +505,24 @@
 - Usage Policies allow the Publisher to change the Behavior of the API through Configuration
 - They are a Collection of Statements that are executed sequentially on the Request or Response of an API
 
+### Policies
+
+- Policies are Configurations that allow Administrators to change the Behavior of APIs without changing the underlying Code
+- They are implemented as XML Structures consisting of individual Statements that are executed in Sequence
+- Policies can be used to set Limits, transform Response Formats, enforce Security Measures, and perform various other Customizations
+- In `Azure API Management`, Policies execute at the following Times:
+  - **Inbound**: These Policies execute when a Request is received from a Client
+  - **Backend**: These Policies execute before a Request is forwarded to a managed API
+  - **Outbound**: These Policies execute before a Response is sent to a Client
+  - **On-Error**: These Policies execute when an Exception is raised
+- The Policy Scope determines how broadly the Policy applies
+- The following Policy Scopes are available for the Administrator to choose from:
+  - **Global**: Policies applied at the Global Scope affect all APIs within the Instance of `Azure API Management`
+  - **Product**: In `Azure API Management` it is possible to group one or more APIs into a single Product and then manage Access to that product as a single Entity. Policies applied to the Product Scope affect all APIs in that Product, but APIs in other Products are not affected
+  - **API**: Policies applied at the API Scope affect only a single API
+  - **Operation**: Policies applied at the Operation Scope affect only one Operation within the API
+- Policies can speed up Responses by Configuring a Cache of prepared Responses; when a Request is received from a User, `Azure API Management` checks to see if there is a suitable Response already in the Cache
+
 ### Subscriptions and API Keys
 
 - Subscriptions allow Control of Access to APIs through Segmentation of User Access to an API
