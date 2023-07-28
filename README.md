@@ -646,3 +646,17 @@
   - Partitions are independent of each other and can grow or shrink as Rows are added to or removed from a Partition. A Table can have any number of Partitions
   - When Searching for Data, Developers can include the Partition Key in the Search Criteria. This helps to narrow down the Amount of Data to examine and improves Performance by Reducing the Amount of I/O (Input and Output Operations, or Reads and Writes) required to find the Data
 - The unique Key in an `Azure Table Storage` consists of two Elements: the Partition Key, which identifies the Partition containing the Row, and a Row Key, which is unique to each Row in the same Partition
+
+<hr>
+
+## Azure Key Vault
+
+- `Azure Key Vault` is a Cloud Service for securely Storing and Accessing Secrets
+- A Secret is anything that a Developer wants to tightly Control Access to
+- Developers can control the Distribution of Secrets by Centralizing them in `Azure Key Vault`
+- `Azure Key Vault` enforces Transport Layer Security (TLS) Protocol to protect Data when it is traveling between `Azure Key Vault` and Clients
+- Perfect Forward Secrecy (PFS) protects Connections between Client Systems and Microsoft Cloud Services by unique Keys
+- `Azure Key Vault` helps solve the following Problems:
+  - **Secrets Management**: `Azure Key Vault` can be used to securely store and tightly Control Access to Tokens, Passwords, Certificates, API Keys, and other Secrets
+  - **Key Management**: `Azure Key Vault` can also be used as a Key Management Solution, so makes it easy to create and control the Encryption Keys used to encrypt Data
+  - **Certificate Management**: `Azure Key Vault` is also a Service that allows Developers to easily provision, manage, and deploy Public and Private Secure Sockets Layer/Transport Layer Security (SSL/TLS) Certificates for Use with Azure and internal connected Resources
