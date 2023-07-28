@@ -246,11 +246,15 @@
 - Region Pairs are Regions that are combined with another Region at least 300 miles (approx. 480 km) away within the same Geography (e.g. USA, Europe or Asia)
 - Region Pairs enable Replication of Resources within a Geography to reduce the Likelihood of Interruptions due to major Events
 
+<hr>
+
 ## Azure Resource
 
 - Before a Subscription can be created, Resources must be created and stored in Resource Groups. These terms are defined as follows:
   - **Resource**: A Resource is a manageable Element that is available through Azure. Examples of Resources include Virtual Machines, Storage Accounts, Web Applications, Databases and Virtual Networks
   - **Resource Group**: A Resource Group is a Container that contains related Resources for an Azure Solution. The Resource Group contains Resources that the User wants to manage as a Group. The User decides which Resources belong to a Resource Group depending on what makes the most Sense for their Organization
+
+<hr>
 
 ## Azure Resource Groups
 
@@ -293,6 +297,8 @@
   - Apply Tags to Resources to logically organize all Resources in the subscription
   - Provide Billing Information to Users by Displaying the Cost of a Resource Group with the same Tag
 
+<hr>
+
 ## Azure Subscription
 
 - An Azure Subscription provides authenticated and authorized Access to Azure Services
@@ -303,6 +309,8 @@
 - Azure Subscriptions allow to define following two Limits for Azure Products, Services and Resources:
   - **Billing Limits**: This Subscription Type determines how Azure Usage is billed to an Azure Accounts. This allows the User to create multiple Subscriptions for different Types of Billing Requirements
   - **Access Control Limits**: Azure applies Access Management Policies at the Subscription level. This allows the User to create separate Subscriptions for different organizational Structures
+
+<hr>
 
 ## Azure Management Group
 
@@ -536,3 +544,105 @@
 - **Product**: a Product is a Collection of one or more APIs that is configured through the `Azure API Management`. Products can have different Access Rules, Usage Quotas, and Usage Policies
 
 <hr>
+
+## Azure Cosmos DB
+
+- `Azure Cosmos DB` is a fully managed NoSQL Database designed to provide low Latency, elastic Scalability of Throughput, well-defined Semantics for Data Consistency, and high Availability
+- Databases can be configured to be globally distributed and available in any of the `Azure Regions`, enabling lower Latency by Placing Data close to where Users are located
+
+### Azure Cosmos DB Account
+
+- The `Azure Cosmos DB` Account is the basic Unit of global Distribution and high Availability
+- It contains a unique DNS Name, and can be managed using the Azure Portal, the Azure CLI, or various language-specific SDKs
+- For global Distribution of Data and Throughput across multiple `Azure Regions`, it is required to add or remove `Azure Regions` to the `Azure Cosmos DB` Account
+- `Azure Cosmos DB` provides several Database APIs that enable Developers to model real-world Data using Document, Key-Value, Graph, and Column Family Data Models
+- These APIs allow Applications to treat `Azure Cosmos DB` as if it were several other Database Technologies, without the Overhead of Management and Scaling Approaches
+
+### Azure Cosmos DB Container
+
+- A Database is analogous to a namespace, and is the Unit of management for a Set of `Azure Cosmos DB` Containers
+- An `Azure Cosmos DB` Container is the fundamental Unit of Scalability
+- A Container can have virtually unlimited provisioned Throughput, i.e. Request Units per Second (RU/s) and Storage
+- A Request Unit (RU) represents the System Resources, such as CPU, IOPS, and Memory, required to perform the Database Operations supported by `Azure Cosmos DB`
+- `Azure Cosmos DB` transparently partitions the Container using the logical Partition Key specified by the Administrator to elastically scale the Throughput and Storage provided
+- A Container is a Schema-agnostic Container of Items, which allows Items in a Container to have arbitrary Schemas
+- By default, all Items added to a Container are automatically indexed without the Need for explicit Index or Schema Management
+- Depending on the API used, an `Azure Cosmos DB` Item can represent either a Document in a Collection (MongoDB), a Row in a Table (PostgreSQL), or a Node or Edge in a Graph (Apache Gremlin)
+
+<p align="center">
+  <img src="https://github.com/michael-steinert/AzureEssentials/assets/29623199/60735606-72d6-464d-9b06-0913cf03aac9" alt="DB Account Entities" width="75%"/>
+</P>
+
+### Data Consistency Levels
+
+- `Azure Cosmos DB` approaches Data Consistency as a Spectrum of Choices rather than two Extremes, i.e. Strong Consistency and Eventual Consistency
+- Strong Consistency and Eventual Consistency are at the Ends of the Spectrum, but there are many Data Consistency Options along the Spectrum
+- Developers can use these Options to make precise Choices and granular Trade-Offs for high Availability and Performance
+
+<p align="center">
+  <img src="https://github.com/michael-steinert/AzureEssentials/assets/29623199/8d8ee6a3-cb8f-4e3e-898b-b1d9db84724f" alt="Data Consistency Levels" width="75%"/>
+</P>
+
+#### Strong Consistency
+
+- Strong Consistency provides a Guarantee of Linearizability
+- Linearizability describes the Consistency of Operations in a distributed System, i.e. it refers to the concurrent Servicing of Requests
+- Reads are guaranteed to return the latest committed Version of an Element
+- A Client never sees an uncommitted or partial Write
+- Users are always guaranteed to read the latest committed Write
+
+#### Bounded Staleness Consistency
+
+- In Bounded Staleness Consistency, Reads are guaranteed to honour the Consistent Prefix Guarantee
+- Reads can lag behind Writes by at most "K" Versions (i.e. Updates) of an Item, or by "T" Time Interval, whichever comes first
+
+#### Session Consistency
+
+- With Session Consistency, Reads within a single Client Session are guaranteed to honour the Consistent Prefix, monotonic Reads, monotonic Writes and Write-Follows-Reads Guarantees
+- This assumes a single Writer Session or Sharing of the Session Token for multiple Writers
+
+#### Consistent Prefix Consistency
+
+- With Consistent Prefix Consistency, Updates made as single-document Writes see eventual Consistency
+- Updates made as a Batch within a Transaction are returned consistent to the Transaction in which they were committed
+- Write Operations within a Transaction of multiple Documents are always visible together
+
+#### Eventual Consistency
+
+- In Eventual Consistency, there is no Order guarantee for Reads
+- In the Absence of further Writes, the Replicas will eventually converge
+- Eventual Consistency is the weakest Form of Data Consistency, because a Client can read the Values that are older than the ones it read before
+- Eventual Consistency is ideal when the Application does not require Order Guarantees
+
+<hr>
+
+## Azure Blob Storage
+
+- In the a `Azure Storage Account`, Developers can store Blobs in Containers called `Azure Blob Storage`
+- A Container is a convenient Way to group related Blobs that allow Developers to control who can read and write Blobs within it at the Container Level
+- Within a Container, Developers can organize Blobs in a Hierarchy of virtual Folders, similar to Files in a File System on Disk
+- `Azure Blob Storage` supports the following Types of Blobs:
+  - **Block Blobs**: A Block Blob is treated as a Set of Blocks. Each Block can vary in Size, up to 100MB. A Block Blob can contain up to 50,000 Blocks, for a maximum Size of over 4.7TB. The Block is the smallest Amount of Data that can be read or written as a single Unit. Block Blobs are best used to store discrete, large, binary Objects that change infrequently
+  - **Page Blobs**: A Page Blob is organized as a Collection of 512-Byte Pages of fixed Size. A Page Blob is optimized to support random Read and Write Operations. Developers can fetch and store Data for a single Page if required. A Page Blob can hold up to 8TB of Data. Azure uses Page Blobs to implement virtual Disk Storage for Virtual Machines
+  - **Append Blobs**: An Append Blob is a Block Blob optimized to support Append Operations. Developer can only add Blocks to the End of an Append Blob; updating or deleting existing Blocks is not supported. Each Block can vary in size, up to 4MB. The maximum Size of an Append Blob is just over 195 GB
+- `Azure Blob Storage` provides the following Access Tiers to balance Access Latency and Storage Cost:
+  - **Hot Tier** is the default. Developers use this Tier for Blobs that are accessed frequently. Blob Data is stored on high performance Media
+  - The **Cool Tier** has lower Performance and a lower Storage Cost than the Hot Tier. It is used for Data that is accessed infrequently. Cool Tier is common for newly created Blobs to be accessed frequently initially, but less frequently over Time. Developers can migrate a Blob from the Cool Tier back to the Hot Tier
+  - The **Archive Tier** provides the lowest Storage Cost, but with increased Latency. It is for historical Data that can not be lost but is rarely needed. Blobs in the Archive Tier are effectively stored in an offline State. Typical Read Latency for the Hot and Cool Tiers is a few Milliseconds, but for the Archive Tier it can take Hours for the Data to become available. To retrieve a Blob from the Archive Tier, Developers must change the Access Tier to Hot or Cool Tier, then the Blob is rehydrated
+
+<hr>
+
+## Azure Tables Storage
+
+- `Azure Table Storage` is a NoSQL Storage Solution that makes Use of Tables containing Key-Value Data Items
+- Each Item is represented by a Row that contains Columns for the Data Fields that need to be stored
+- `Azure Table Storage` allows Developers to store semi-structured Data
+- All Rows in a Table must have a unique Key (composed of a Partition Key and a Row Key), and when Developers modify Data in a Table, a Timestamp Column records the Date and Time the Modification was made; otherwise, the Columns in each Row can vary
+- Tables in `Azure Table Storage` have no Concept of Foreign Keys, Relationships, stored Procedures, Views, or other Objects that Developers might find in a relational Database
+- Data in `Azure Table Storage` is typically demoralized, with each Row containing the entire Data for a logical Entity
+- To ensure fast Access, `Azure Table Storage` divides a Table into Partitions
+- Partitioning is a Mechanism for Grouping related Rows based on a common Property, or Partition Key, so that Rows with the same Partition Key are stored together
+- Partitioning can improve Scalability and Performance as well as Helping to organize Data in the following Ways:
+  - Partitions are independent of each other and can grow or shrink as Rows are added to or removed from a Partition. A Table can have any number of Partitions
+  - When Searching for Data, Developers can include the Partition Key in the Search Criteria. This helps to narrow down the Amount of Data to examine and improves Performance by Reducing the Amount of I/O (Input and Output Operations, or Reads and Writes) required to find the Data
+- The unique Key in an `Azure Table Storage` consists of two Elements: the Partition Key, which identifies the Partition containing the Row, and a Row Key, which is unique to each Row in the same Partition
