@@ -660,3 +660,25 @@
   - **Secrets Management**: `Azure Key Vault` can be used to securely store and tightly Control Access to Tokens, Passwords, Certificates, API Keys, and other Secrets
   - **Key Management**: `Azure Key Vault` can also be used as a Key Management Solution, so makes it easy to create and control the Encryption Keys used to encrypt Data
   - **Certificate Management**: `Azure Key Vault` is also a Service that allows Developers to easily provision, manage, and deploy Public and Private Secure Sockets Layer/Transport Layer Security (SSL/TLS) Certificates for Use with Azure and internal connected Resources
+
+<hr>
+
+## Azure Application Insights
+
+- `Azure Application Insights` is an Extension of `Azure Monitor` that provides Application Performance Monitoring Capabilities
+- Application Performance Monitoring Tools are useful for Monitoring Applications from Development, through Testing, and into Production in the following Ways:
+  - Proactively understand how an Application is performing
+  - Reactively review Application Execution Data to determine the Cause of an Incident
+- In addition to Collecting Metrics (i.e. numerical Values that represent specific Characteristics or Behaviors of the Application like Response Time, Throughput and Error Rate) and Application Telemetry Data (i.e. Data of an Application during Runtime like Logs, Traces and Events) that describe Application Activity and Health
+- `Azure Application Insights` monitors the following Metrics and Application Telemetry Data:
+  - **Request Rates**, **Response Times**, and **Failure Rates** allow to find out which Pages are most popular, at what Times of Day, and where the Users are
+  - **Dependency Rates**, **Response Times**, and **Failure Rates** allow to find out whether external Services are slowing the monitored Application down
+  - **Exceptions** allow to analyze the aggregated Statistics, or pick specific Instances and drill into the Stack Trace and related Requests
+  - **Page Views** and **Load Performance** are reported by Browsers of the Users
+  - **AJAX Calls** from Web Pages include Rates, Response Times, and Failure Rates
+  - **User Counts** and **Session Counts**
+  - **Performance Counters** from Windows or Linux Server Machines, such as CPU, Memory, and Network Usage
+  - **Host Diagnostics** from Docker or Azure
+  - **Diagnostic Trace Logs** from the monitored Application
+- `Azure Application Insights` is enabled through either Auto-Instrumentation (i.e. Agent) or by Adding the `Azure Application Insights`` SDK to the Application Code
+- Auto-Instrumentation requires no Investment from the Developer and is the only way to instrument an Application where the Developer does not have Access to the Source Code
