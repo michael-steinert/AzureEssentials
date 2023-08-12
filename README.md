@@ -682,3 +682,46 @@
   - **Diagnostic Trace Logs** from the monitored Application
 - `Azure Application Insights` is enabled through either Auto-Instrumentation (i.e. Agent) or by Adding the `Azure Application Insights`` SDK to the Application Code
 - Auto-Instrumentation requires no Investment from the Developer and is the only way to instrument an Application where the Developer does not have Access to the Source Code
+
+<hr>
+
+## Azure Pipelines
+
+- To deploy an Application to an `Azure Resource`, such as a Virtual Machine, a Service Connection is needed
+- A Service Connection provides secure Access to an `Azure Subscription` using one of the following Methods:
+  - Service Principal Authentication: A Service Principal is a limited Role Identity that can access `Azure Resources` and as a Service Account that can perform automated Tasks on the behalf of the Developer
+  - Managed Identities for Azure Resources: Managed Identities for `Azure Resources` is a Feature of `Azure Active Directory` that simplifies the Process of Working with Service Principals. Because Managed Identities exist in the `Azure Active Directory` Tenant, the Azure Infrastructure can automatically authenticate the Service and manage the Account for the Developer
+-
+
+<hr>
+
+## Managed Identities
+
+- Managed identities eliminate the need for developers to manage credentials.
+- While Developers can securely store the Secrets in `Azure Key Vault`, Services need a Way to access `Azure Key Vault`
+- Managed Identities provide an automatically managed Identity in `Azure Active Directory` for Applications to use when Connecting to Resources that support `Azure Active Directory` Authentication
+- Applications can use Managed Identities to obtain `Azure Active Directory` Tokens without having to manage any Credentials
+- There are the following Types of Managed Identities:
+  - A **System-assigned Managed Identity** is enabled directly on an Azure Service Instance. When the Identity is enabled, Azure creates an Identity for the Instance in the `Azure Active Directory` Tenant that is trusted by the Subscription of the Instance. After the Identity is created, the Credentials are provisioned onto the Instance. The Lifecycle of a System-assigned Identity is directly tied to the Azure Service Instance that it is enabled on. If the Instance is deleted, Azure automatically cleans up the Credentials and the Identity in `Azure Active Directory`
+  - A **User-assigned Managed Identity** is created as a standalone `Azure Resources`. Through a Create Process, Azure creates an Identity in the `Azure Active Directory` Tenant that is trusted by the Subscription in Use. After the Identity is created, the Identity can be assigned to one or more Azure Service Instances. The Lifecycle of a User-assigned Identity is managed separately from the Lifecycle of the Azure Service Instances to which it is assigned
+
+| Characteristic                 | System-assigned Managed Identity                                                                                                                                 | User-assigned Managed Identity                                                  |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Creation                       | Created as Part of an Azure Resource                                                                                                                             | Created as a stand-alone Azure Resource                                         |
+| Lifecycle                      | Shared Lifecycle with the Azure Resource that the Managed Identity is created with. When the Parent Resource is deleted, the Managed Identity is deleted as well | Independent Lifecycle. Identity must be explicitly deleted                      |
+| Sharing across Azure Resources | Identity can not be shared, it can only be associated with a single Azure Resource                                                                               | Identity can be shared, and can be associated with more than one Azure Resource |
+
+### Acquire an Access Token
+
+- A Client Application can request Managed Identities for `Azure Resources` App-only Access Token for Accessing a given Resource
+- The Token is based on the Managed Identities for `Azure Resources` Service Principal
+- The recommended Method is to use the `DefaultAzureCredential`
+- `DefaultAzureCredential` automatically attempts to authenticate via multiple Mechanisms, including Environment Variables or an interactive Sign-in
+- The Credential Type can be used in the Development Environment using own Credentials or it can also be used in Production Environment using a Managed Identity
+- The `DefaultAzureCredential` attempts to authenticate via the following Mechanisms, in this Order, stopping when one succeeds:
+  - **Environment** - The `DefaultAzureCredential` reads Account Information specified via Environment Variables and use it to authenticate
+  - **Managed Identity** - If the Application is deployed to an Azure Environment with Managed Identity enabled, the `DefaultAzureCredential` authenticates with that Account
+  - **Visual Studio** - If the Developer has authenticated via Visual Studio, the `DefaultAzureCredential` authenticates with that Account
+  - **Azure CLI** - If the Developer has authenticated an Account via the Azure CLI, the `DefaultAzureCredential` authenticates with that Account
+  - **Azure PowerShell** - If the Developer has authenticated an Account via the Azure PowerShell, the `DefaultAzureCredential` authenticates with that Account
+  - **Interactive Browser** - If enabled, the `DefaultAzureCredential` will interactively authenticate the Developer via the default Browser of the System
