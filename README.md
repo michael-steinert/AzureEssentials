@@ -335,24 +335,32 @@
 
 - Virtual Machines (VMs) are Software Emulations of physical Computers that have a virtual Processor, Memory, Storage and Network Resources
 - VMs host an Operating System and allow Software to be installed and run as on a physical Computer
-- Using a Remote Desktop Client, Users can use and control the Virtual Machine like a physical Computer
+- Using a Remote Desktop Client, Users can use and control the VM like a physical Computer
 - With `Azure Virtual Machines`, Users can create and use VMs in the Cloud
 - VMs provide Infrastructure-as-a-Service (IaaS), giving the User complete Control over their Operating System and Environment
 - VMs allow Users to run their own Software or Custom Hosting Configurations
-- Virtual machines are the ideal Choice when the User requires:
+- `Azure Virtual Machines` are the ideal Choice when the User requires:
   - Full Control over the Operating System
   - The Ability to run their own Software
   - The ability to use Custom Hosting Configurations
+- An `Azure Resource` is a manageable Item in Azure that VMs need to do their Task
+- A VM requires the following Resources, all of which are created by Azure on demand:
+  - **VM**: Azure offers different VM Sizes that provide Variations of Compute, Memory, and Storage to help Developers choose the right VM for their Workload
+  - **Disk Storage**: All `Azure Virtual Machines` have at least two virtual Hard Disks. The first Disk stores the Operating System, and the second is used for temporary Storage; additional Data Disks should be added to store Application Data
+  - **Virtual Network**: Virtual Networks (VNs) are used in Azure to provide private Connectivity between `Azure Virtual Machines` and other Azure Services. VMs and Services that are Part of the same VN can access each other. By default, Services outside the VN can not connect to Services inside the VN, but Developers can configure the Network to allow Access to external Services
+  - **Network Interface**: Network Interfaces are used to communicate on the Network
+  - **Network Security Group**: By default, there are no Security Boundaries between Subnets, allowing Services on each Subnet to talk to each other. However, Developers can set up Network Security Groups (NSGs) that allow them to control the Flow of Traffic to and from Subnets and VMs. NSGs act as Software Firewalls, applying Custom Rules to each incoming or outgoing Request at the Network Interface and Subnet Level. This gives Developers complete Control over every Network Request that enters or leaves the VM
+  - **IP Address**: An IP Address can be either public, private or both, allowing Communication with the VM over the Internet
 
 #### VM Scaling Groups
 
 - `VM Scaling Groups` are an Azure Computing Resource that allows Users to provision and manage a Group of identical VMs
-- Because all VMs in a VM Scaling Group are configured identically, VM Scaling Groups enable true Auto-Scaling, eliminating the Need to provision VMs in Advance
+- Because all VMs in a `VM Scaling Group` are configured identically, `VM Scaling Groups` enable true Auto-Scaling, eliminating the Need to provision VMs in Advance
 - Auto-Scaling facilitates the Creation of large-scale Services designed for high Computing Power, Big Data and Workloads in Containers
 - As Demand increases, more VM Instances can be added; as Demand decreases, VM Instances can be removed
 - Scaling can be done manual, automated or a Combination of both
 
-#### Containers and Kubernetes
+### Containers and Kubernetes
 
 - `Azure Container Instances` and `Azure Kubernetes Service` are Azure IT Resources that Users can use to deploy and manage Containers
 - Containers are lightweight, virtualized Application Environments
@@ -361,13 +369,13 @@
 - `Azure Container Instances` provides the fastest and easiest Way to run a Container in Azure without having to manage VMs or deploy additional Services
 - `Azure Kubernetes Service` is an Orchestration Service tasked with Automating, Managing and Interacting with Containers
 
-#### Azure App Service
+### Azure App Service
 
 - `Azure App Services` enables Users to build, deploy and scale enterprise-class Web, Mobile and API Applications that can run on any Platform
 - The Applications created can meet rigorous Performance, Scalability, Security and Compliance Requirements using a fully managed Infrastructure Maintenance Platform
 - `Azure App Services` is a PaaS (Platform as a Service) Offering
 
-#### Azure Functions
+### Azure Functions
 
 - `Azure Functions` is used when Users only need to worry about the Code that runs their Service, not the underlying Platform (like Operating System and Server) or Infrastructure
 - `Azure Functions` is often used when Users need to perform a Task in Response to an Event (often via a REST Request), Timer or Message from another Azure Service, and that Task can be executed quickly (within seconds or less)
@@ -391,12 +399,12 @@
 - When `Application Insights` is integrated, Telemetry Data is sent to the associated `Application Insights` Instance
 - The Telemetry Data includes Logs generated by the Functions Host, Traces written by the Function Code and Performance Data
 
-##### Azure Functions vs. Azure Logic Apps
+#### Azure Functions vs. Azure Logic Apps
 
 - `Azure Functions` can execute Code in almost any modern Programming Language
 - `Azure Logic Apps` are created in a Web-based Designer and can execute Logic triggered by Azure Services without writing Code
 
-##### Important Components of Azure Functions
+#### Important Components of Azure Functions
 
 | Component                      | Description                                                                                                                                                                                                                                                                                                                    |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -465,7 +473,7 @@
   <img src="https://github.com/michael-steinert/AzureEssentials/assets/29623199/c1b23f17-a1d3-4951-a85a-f41bf6c5e7eb" alt="Human Interaction" width="30%"/>
 </P>
 
-###### Webhooks
+##### Webhooks
 
 - Webhooks are User-defined HTTP Callbacks
 - They provide a lightweight Mechanism for Applications to be notified by another Service when something of Interest happens through an HTTP Endpoint
