@@ -657,6 +657,22 @@
 
 <hr>
 
+## Azure Storage Explorer
+
+- `Azure Storage Explorer` gives Developers a quick View of all the Storage Services under their Account. They can browse, read, and edit Data stored in these Storage Services through an user-friendly graphical Interface or the `Azure CLI` at the Command Line
+  - `Azure Storage Accounts` provide a flexible Solution that stores Data as Files, Tables, and Messages. `Azure Storage Explorer` allows to read and manipulate this Data
+  - `Azure Storage Explorer` can access many different Types of Data from Services such as:
+  - `Azure Blob Storage` is used to store unstructured Data as a Binary Large Object (Blob)
+  - `Azure Table Storage` is used to store NoSQL, semi-structured Data
+  - `Azure Queue Storage` is used to store Messages in a Queue, which can then be accessed and processed by Applications via HTTP(S) Calls
+  - `Azure Files` is a File Sharing Service that provides Access via the Server Message Block (SMB) Protocol, similar to traditional File Servers
+  - `Azure Data Lake Storage`, based on Apache Hadoop, is designed for large Volumes of Data and can store both unstructured and structured Data. It is an `Azure Blob Storage` with the hierarchical Namespace Feature enabled on the `Azure Storage Account`
+- `Azure Storage Explorer` allows Developers to emulate `Azure Storage Accounts` locally. It supports two Emulators: `Azure Storage Emulator` and `Azurite`
+  - `Azure Storage Emulator` uses a local Instance of Microsoft SQL Server 2012 Express LocalDB. It emulates `Azure Table`, `Azure Queue` and `Azure Blob Storage`
+  - `Azurite`, based on Node.js, is an Open Source Emulator that supports most `Azure Storage Account` Commands through an API
+
+<hr>
+
 ## Azure Key Vault
 
 - `Azure Key Vault` is a Cloud Service for securely Storing and Accessing Secrets
